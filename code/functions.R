@@ -1,33 +1,50 @@
-# ---- police ----
-salary %>% 
-  filter(department == "patrol") %>% 
-  group_by(title) %>%
-  summarize(
-    minSalary = min(earnings),
-    medianSalary = median(earnings),
-    maxSalary = max(earnings),
-    count = n()) %>% 
-  arrange(desc(medianSalary))
+## First, let's clean the data.
 
-salary %>% 
-  filter(department == "patrol" & title == 'police officer') %>%
+# ---- clean ----
+# Give the data better names
+names(salaries) <- c("jobTitle", "department", "earnings2015")
+
+# Lowercase all names for consistency
+salaries %<>%
+  transmute(jobTitle = tolower(jobTitle),
+            department = tolower(department),
+            earnings2015 = 
+              as.numeric(gsub('(\\$)|(\\,)','', earnings2015)))
+
+## Next, let's ask some questions
+
+# ---- questions ----
+# Who is the highest paid employye in each department?
+highest <- salaries %>% 
+  group_by(department) %>% 
+  filter(earnings == max(earnings))
+
+## Let's look at one specific department, like police
+# ---- police ----
+salaries %>% 
+  filter(department == "patrol") %>% 
+  group_by(jobTitle) %>%
+  summarize(
+    minsalaries = min(earnings),
+    mediansalaries = median(earnings),
+    maxsalaries = max(earnings),
+    count = n()) %>% 
+  arrange(desc(mediansalaries))
+
+salaries %>% 
+  filter(department == "patrol" & jobTitle == 'police officer') %>%
   ggplot(aes(earnings)) +
   geom_histogram(bins = 35)
 
 # ---- policeCount ----
-salary %>% 
+salaries %>% 
   filter(department == 'patrol') %>% 
   summarize(count = n())
 
-# ---- generalWork ----
-names(salaries) <- c("jobTitle", "department", "earnings2015")
 
-salaries <- salaries %>%
-  mutate(jobTitle = tolower(jobTitle), 
-         department = tolower(department),
-         earnings2015 = 
-           as.numeric(
-             str_replace_all(earnings2015, "[\\$]|[\\,]",""))) %>%
+
+# ---- generalWork ----
+salaries %>%
   ggplot(aes(department, median(earnings2015))) +
   geom_bar(stat = identity)
 
@@ -35,15 +52,14 @@ salaries <- salaries %>%
 median <- salaries %>%
   group_by(department) %>% 
   summarize(positionCount = length(jobTitle),
-            medianSalary = round(median(earnings2015), 2),
-            weightedMedianSalary = round(median(earnings2015)/sum(positionCount), 2)) %>% 
-  arrange(desc(weightedMedianSalary))
+            mediansalaries = round(median(earnings2015), 2)) %>% 
+  arrange(desc(weightedMediansalaries))
 
 median <- salaries %>%
   group_by(department, jobTitle) %>%
   summarize(positionCount = length(jobTitle),
-            medianSalary = round(median(earnings2015), 2)) %>% 
-  arrange(department, desc(medianSalary))
+            mediansalaries = round(median(earnings2015), 2)) %>% 
+  arrange(department, desc(mediansalaries))
 
 salaries %>% 
   group_by(department) %>% 
