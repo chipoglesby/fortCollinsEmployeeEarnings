@@ -14,8 +14,8 @@ options(scipen=999)
 ## Salary Data
 
 The Fort Collins Police Department reports 
-`r salary %>% filter(department == 'patrol') %>% summarize(count = n())`
+`r salaries %>% filter(department == 'patrol') %>% summarize(count = n())`
 employees on staff in 2015. Of those employees the highest paid position is the
-`r salary %>% filter(department == 'patrol') %>% top_n(1) %>% select(title)` with
+`r salaries %>% filter(department == 'patrol') %>% top_n(1) %>% select(jobTitle)` with
 an annual salary of 
-`r paste("$", salary %>% filter(department == 'patrol') %>% top_n(1) %>% select(earnings), sep = "")`.
+`r paste("$", salaries %>% filter(department == 'patrol') %>% top_n(1) %>% select(earnings2015), sep = "")`.

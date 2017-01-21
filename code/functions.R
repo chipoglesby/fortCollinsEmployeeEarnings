@@ -17,7 +17,7 @@ salaries %<>%
 # Who is the highest paid employye in each department?
 highest <- salaries %>% 
   group_by(department) %>% 
-  filter(earnings == max(earnings))
+  filter(earnings2015 == max(earnings2015))
 
 ## Let's look at one specific department, like police
 # ---- police ----
@@ -25,15 +25,15 @@ salaries %>%
   filter(department == "patrol") %>% 
   group_by(jobTitle) %>%
   summarize(
-    minsalaries = min(earnings),
-    mediansalaries = median(earnings),
-    maxsalaries = max(earnings),
+    minsalaries = min(earnings2015),
+    mediansalaries = median(earnings2015),
+    maxsalaries = max(earnings2015),
     count = n()) %>% 
   arrange(desc(mediansalaries))
 
 salaries %>% 
   filter(department == "patrol" & jobTitle == 'police officer') %>%
-  ggplot(aes(earnings)) +
+  ggplot(aes(earnings2015)) +
   geom_histogram(bins = 35)
 
 # ---- policeCount ----
@@ -44,16 +44,16 @@ salaries %>%
 
 
 # ---- generalWork ----
-salaries %>%
-  ggplot(aes(department, median(earnings2015))) +
-  geom_bar(stat = identity)
+# salaries %>%
+#   ggplot(aes(department, median(earnings2015))) +
+#   geom_bar(stat = identity)
 
 
 median <- salaries %>%
   group_by(department) %>% 
   summarize(positionCount = length(jobTitle),
             mediansalaries = round(median(earnings2015), 2)) %>% 
-  arrange(desc(weightedMediansalaries))
+  arrange(desc(mediansalaries))
 
 median <- salaries %>%
   group_by(department, jobTitle) %>%
@@ -61,8 +61,8 @@ median <- salaries %>%
             mediansalaries = round(median(earnings2015), 2)) %>% 
   arrange(department, desc(mediansalaries))
 
-salaries %>% 
-  group_by(department) %>% 
-  summarize(total = sum(earnings2015)) %>% 
-  ggplot(aes(department, total)) +
-  geom_bar(stat = identity)
+# salaries %>% 
+#   group_by(department) %>% 
+#   summarize(total = sum(earnings2015)) %>% 
+#   ggplot(aes(department, total)) +
+#   geom_bar(stat = identity)
