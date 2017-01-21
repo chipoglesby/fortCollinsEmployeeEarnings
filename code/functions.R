@@ -21,9 +21,14 @@ highest <- salaries %>%
 
 ## Let's look at one specific department, like police
 # ---- police ----
-salaries %>% 
-  filter(department == "patrol") %>% 
-  group_by(jobTitle) %>%
+
+# Subsetting police
+police <- salaries %>%
+  filter(grepl("office of the chief|patrol|investigative|information services", department)) %>% 
+  mutate(departmentProper = "police")
+
+police %>% 
+  group_by(department) %>%
   summarize(
     minsalaries = min(earnings2015),
     mediansalaries = median(earnings2015),
@@ -31,14 +36,12 @@ salaries %>%
     count = n()) %>% 
   arrange(desc(mediansalaries))
 
-salaries %>% 
-  filter(department == "patrol" & jobTitle == 'police officer') %>%
+police %>% 
   ggplot(aes(earnings2015)) +
-  geom_histogram(bins = 35)
+  geom_histogram(bins = 100)
 
 # ---- policeCount ----
-salaries %>% 
-  filter(department == 'patrol') %>% 
+police %>% 
   summarize(count = n())
 
 
