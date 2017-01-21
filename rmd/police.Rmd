@@ -1,0 +1,21 @@
+---
+title: "Analysis: Fort Collins Police Department"
+output:
+  github_document:
+    html_preview: FALSE
+---
+
+```{r setup, include=F}
+knitr::read_chunk('../code/load.R')
+options(scipen=999)
+```
+```{r begin, echo = FALSE, message = FALSE, warning = FALSE}
+```
+## Salary Data
+
+The Fort Collins Police Department reports 
+`r salary %>% filter(department == 'patrol') %>% summarize(count = n())`
+employees on staff in 2015. Of those employees the highest paid position is the
+`r salary %>% filter(department == 'patrol') %>% top_n(1) %>% select(title)` with
+an annual salary of 
+`r paste("$", salary %>% filter(department == 'patrol') %>% top_n(1) %>% select(earnings), sep = "")`.

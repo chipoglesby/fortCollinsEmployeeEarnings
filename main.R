@@ -1,8 +1,7 @@
+Sys.setenv(RSTUDIO_PANDOC='/Applications/RStudio.app/Contents/MacOS/pandoc')
 # Load most commonly used libraries
 
-library(dplyr)
-library(bigrquery)
-library(ggplot2)
+library(tidyverse)
 
 # ---- begin ----
 # Step One: Load Data from Google Big Query:
@@ -14,5 +13,4 @@ source("code/functions.R")
 
 # ---- knit ----
 # Step Three: Knitting Report
-knitr::knit("README.Rmd", "README.md")
-knitr::knit("README.Rmd", "analysis.pdf")
+rmarkdown::render("rmd/police.Rmd", "github_document", "../analysis/police.md")
