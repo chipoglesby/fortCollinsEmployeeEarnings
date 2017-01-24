@@ -16,6 +16,6 @@ options(scipen=999)
 The Fort Collins Police Department reports 
 `r police %>% summarize(count = n())`
 employees on staff in 2015. Of those employees the highest paid position is the
-`r police %>% arrange(desc(earnings2015)) %>% filter(earnings2015 == max(earnings2015)) %>% select(jobTitle)` with
+`r police %>% arrange(desc(earnings)) %>% filter(earnings == max(earnings)) %>% select(jobTitle)` with
 an annual salary of 
-`r paste("$", police %>% filter(earnings2015 == max(earnings2015)) %>% select(earnings2015), sep = "")`.
+`r paste("$", police %>% filter(earnings == max(earnings)) %>% select(earnings), sep = "")`.
