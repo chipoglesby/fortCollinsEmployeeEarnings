@@ -2,15 +2,20 @@
 
 # ---- clean ----
 # Give the data better names
-names(salaries) <- c("jobTitle", "department", "earnings")
+names(salaries) <- c("jobTitle", "division", "earnings")
 
 # Lowercase all names for consistency
 salaries %<>%
   transmute(jobTitle = tolower(jobTitle),
-            department = tolower(department),
+            division = tolower(division),
             earnings = 
               as.numeric(gsub('(\\$)|(\\,)','', earnings)),
-            year = 2015)
+            year = 2015,
+            department = "") %>% 
+  mutate(department = 
+  replace(department,
+  grepl("office of the chief|patrol|investigative|information services",
+        division), "police"))
 
 ## Next, let's ask some questions
 
@@ -24,9 +29,9 @@ highest <- salaries %>%
 # ---- police ----
 
 # Subsetting police
-police <- salaries %>%
-  filter(grepl("office of the chief|patrol|investigative|information services", department)) %>% 
-  mutate(departmentProper = "police")
+police <- salaries %<>%
+  filter(grepl("office of the chief|patrol|investigative|information services", division)) %>% 
+  mutate(department = "police")
 
 police %>% 
   group_by(department) %>%
