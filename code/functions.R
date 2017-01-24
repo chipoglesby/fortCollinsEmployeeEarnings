@@ -9,7 +9,8 @@ salaries %<>%
   transmute(jobTitle = tolower(jobTitle),
             department = tolower(department),
             earnings = 
-              as.numeric(gsub('(\\$)|(\\,)','', earnings)))
+              as.numeric(gsub('(\\$)|(\\,)','', earnings)),
+            year = 2015)
 
 ## Next, let's ask some questions
 
