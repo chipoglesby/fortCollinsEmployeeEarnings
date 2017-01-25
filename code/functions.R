@@ -2,36 +2,73 @@
 
 # ---- clean ----
 # Give the data better names
-names(salaries) <- c("jobTitle", "division", "earnings")
+names(salaries) <- c("jobTitle", "department", "earnings")
 
 # Lowercase all names for consistency
 salaries %<>%
   transmute(jobTitle = tolower(jobTitle),
-            division = tolower(division),
+            department = tolower(department),
             earnings = 
               as.numeric(gsub('(\\$)|(\\,)','', earnings)),
             year = 2015,
-            department = "") %>% 
-  mutate(department = 
-  replace(department,
-  grepl("office of the chief|patrol|investigative|information services",
-        division), "police"))
+            serviceArea = "") %>% 
+  mutate(
+    serviceArea = 
+      replace(serviceArea,grepl("",serviceArea), "unknown"),
+    serviceArea = 
+      replace(serviceArea,grepl("office of the chief|patrol|investigative|\
+                                information services|investigations",department), "police services"),
+    serviceArea = 
+      replace(serviceArea,grepl("accounting and treasury|budget|revenue|\
+                                purchasing|risk mgmt|airport|safety|finance admin",department),
+              "financial services"),
+    serviceArea = 
+      replace(serviceArea,grepl("information technology|human resources|\
+                                public involvement",department), "information and employee services"),
+    serviceArea = 
+      replace(serviceArea,grepl("water|electric|utility|customer connections|\
+                                ^ut|^l&p",department), "utility services"),
+    serviceArea = 
+      replace(serviceArea,grepl("economic health|^environmental|social \
+                                sustainability|sustainability services admin",department), 
+              "sustainability services"),
+    serviceArea = 
+      replace(serviceArea,grepl("cultural services|recreation|parks|natural \
+                                areas|park planning|operation services|community services admin", 
+                                department), "community and operation services"),
+    serviceArea = 
+      replace(serviceArea,grepl("^city manager\'s",department), "city manager"),
+    serviceArea = 
+      replace(serviceArea,grepl("city attorney",department), "city attorney"),
+    serviceArea = 
+      replace(serviceArea,grepl("comm dev|streets|engineering|fc moves|transfort|\
+                                ^traffic$|parking|^pdt",department), "planning development & transportation"),
+    serviceArea =
+      replace(serviceArea,grepl("city clerk",department), "deputy city manager"),
+    serviceArea = 
+      replace(serviceArea,grepl("library",department), "library services"),
+    serviceArea = 
+      replace(serviceArea,grepl("fire",department), "poudre fire authority")
+      )
 
+unknown <- salaries %>% 
+  filter(serviceArea == 'unknown') %>% 
+  distinct(department) %>% 
+  arrange(department)
 ## Next, let's ask some questions
 
 # ---- questions ----
-# Who is the highest paid employye in each department?
+# Who is the highest paid employye in each serviceArea?
 highest <- salaries %>% 
-  group_by(department) %>% 
+  group_by(serviceArea) %>% 
   filter(earnings == max(earnings))
 
-## Let's look at one specific department, like police
+## Let's look at one specific serviceArea, like police
 # ---- police ----
 
 # Subsetting police
-police <- salaries %<>%
-  filter(grepl("office of the chief|patrol|investigative|information services", division)) %>% 
-  mutate(department = "police")
+police <- salaries %>%
+  filter(serviceArea == 'police services')
 
 police %>% 
   group_by(department) %>%
@@ -50,28 +87,10 @@ police %>%
 police %>% 
   summarize(count = n())
 
-
-
 # ---- generalWork ----
-# salaries %>%
-#   ggplot(aes(department, median(earnings))) +
-#   geom_bar(stat = identity)
-
 
 median <- salaries %>%
-  group_by(department) %>% 
+  group_by(serviceArea) %>% 
   summarize(positionCount = length(jobTitle),
             mediansalaries = round(median(earnings), 2)) %>% 
   arrange(desc(mediansalaries))
-
-median <- salaries %>%
-  group_by(department, jobTitle) %>%
-  summarize(positionCount = length(jobTitle),
-            mediansalaries = round(median(earnings), 2)) %>% 
-  arrange(department, desc(mediansalaries))
-
-# salaries %>% 
-#   group_by(department) %>% 
-#   summarize(total = sum(earnings)) %>% 
-#   ggplot(aes(department, total)) +
-#   geom_bar(stat = identity)
