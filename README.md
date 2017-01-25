@@ -2,9 +2,7 @@
 An analysis of [2015 Fort Collins CO Employee Earnings](http://www.fcgov.com/openbook/?action=browse-salaries)
 
 ## Data overview
-The data pulled from the Fort Collins Open Book website is available in the [data folder](data/raw). 
-
-There were variables added to the dataset:
+The data pulled from the Fort Collins Open Book website is available in the [data folder](data/raw). There were variables added to the dataset:
 
 1. `serviceArea`: Using the [organizational chart](assets/fortCollinsOrganization.pdf),
 the the `serviceArea` was added to organize the service units and departments into a better structure.
