@@ -38,5 +38,5 @@ knitr::kable(salaries %>%
             jobTitleCount = length(unique(jobTitle)),
             employeeCount = length(jobTitle),
             medianSalary = median(earnings)) %>% 
-  arrange(desc(medianSalary)))
+  arrange(desc(employeeCount)))
 ```
