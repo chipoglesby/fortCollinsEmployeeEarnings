@@ -12,7 +12,7 @@ highest <- salaries %>%
 # Subsetting police
 police <- salaries %>%
   filter(serviceArea == 'police services') %>% 
-  group_by(jobTitle) %>% 
+  group_by(jobTitle, department, earnings) %>% 
   summarize(
             employeeCount = n(),
             medianSalary = median(earnings),
