@@ -61,4 +61,4 @@ salaries %<>%
 salaries %<>%
   filter(serviceArea != "unknown")
 
-write_csv(salaries, "data/cleaned/salaries.csv")
+write_csv(salaries, "data/clean/salaries.csv")
