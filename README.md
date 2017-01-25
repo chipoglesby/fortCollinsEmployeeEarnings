@@ -15,19 +15,17 @@ The data pulled from the Fort Collins Open Book website is available in the [dat
 
 As of 2015, there are 13 Service areas with a total of 2165 employees.
 
-    ## # A tibble: 12 × 5
-    ##                              serviceArea departmentCount jobTitleCount
-    ##                                    <chr>           <int>         <int>
-    ## 1                  poudre fire authority               1            35
-    ## 2                        police services               3            25
-    ## 3      information and employee services               2            57
-    ## 4                          city attorney               1            10
-    ## 5                    deputy city manager               1             6
-    ## 6                       utility services               9           105
-    ## 7                           city manager               1            13
-    ## 8       community and operation services               6           103
-    ## 9                sustainability services               3            15
-    ## 10 planning development & transportation               9           122
-    ## 11                    financial services               5            33
-    ## 12                      library services               1            36
-    ## # ... with 2 more variables: employeeCount <int>, medianSalary <dbl>
+| serviceArea                           |  departmentCount|  jobTitleCount|  employeeCount|  medianSalary|
+|:--------------------------------------|----------------:|--------------:|--------------:|-------------:|
+| poudre fire authority                 |                1|             35|            221|      87013.21|
+| police services                       |                3|             25|            286|      80195.07|
+| information and employee services     |                2|             57|             98|      65725.87|
+| city attorney                         |                1|             10|             24|      57571.79|
+| deputy city manager                   |                1|              6|              6|      57108.05|
+| utility services                      |                9|            105|            244|      54644.11|
+| city manager                          |                1|             13|             20|      48765.03|
+| community and operation services      |                6|            103|            255|      47498.33|
+| sustainability services               |                3|             15|             23|      42539.25|
+| planning development & transportation |                9|            122|            391|      37477.48|
+| financial services                    |                5|             33|             47|      35741.53|
+| library services                      |                1|             36|            233|       7229.73|

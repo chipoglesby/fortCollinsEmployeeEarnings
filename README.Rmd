@@ -21,13 +21,13 @@ than the assumed $8.23/hour would be labled as `full time` while anyone earning 
 
 As of 2015, there are `r length(unique(salaries$serviceArea))` Service areas with a total of `r nrow(salaries)` employees.
 
-```{r echo = F}
-salaries %>% 
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+knitr::kable(salaries %>% 
   filter(serviceArea != "unknown") %>% 
   group_by(serviceArea) %>% 
   summarize(departmentCount = length(unique(department)),
             jobTitleCount = length(unique(jobTitle)),
             employeeCount = length(jobTitle),
             medianSalary = median(earnings)) %>% 
-  arrange(desc(medianSalary))
+  arrange(desc(medianSalary)))
 ```
