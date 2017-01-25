@@ -17,7 +17,7 @@ The data pulled from the Fort Collins Open Book website is available in the
 better structure.
 2. `year`: To tidy the data for future use, a `year` variable of 2015 was added
 to the data.
-3. `hourlyWage`:[In 2015, The Associated Press reported](http://denver.cbslocal.com/2015/01/01/colorado-minimum-wage-rises-to-8-23-in-2015/)
+3. `hourlyWage`: [In 2015, The Associated Press reported](http://denver.cbslocal.com/2015/01/01/colorado-minimum-wage-rises-to-8-23-in-2015/)
 that the minimum wage for Colorado was $8.23. Under the assumption that any
 employee earning more than $17,506/year would be full time, we calculated their
 possible hourly salary. Many employees are salaried, so this is more for 
