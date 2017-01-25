@@ -19,7 +19,7 @@ their possible hourly salary. Many employees are salaried, so this is more for i
 than the assumed $8.23/hour would be labled as `full time` while anyone earning less would be `part time` or contract.
 
 
-As of 2015, there are `r length(unique(salaries$serviceArea))` Service areas with a total of `r nrow(salaries)` employees.
+As of 2015, there are `r length(unique(salaries$serviceArea))` service areas with a total of `r nrow(salaries)` employees.
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 knitr::kable(salaries %>% 
