@@ -1,9 +1,13 @@
 ---
 title: Fort Collins, Colorado Employee Earnings
-output:
-  github_document: default
+output: 
+  github_document:
+    html_preview: false
 ---
 
+```{r cache=FALSE, echo=FALSE, message=F, warning=F}
+knitr::read_chunk('main.R')
+```
 An analysis of
 [2015 Fort Collins CO Employee Earnings](http://www.fcgov.com/openbook/?action=browse-salaries)
 
@@ -30,6 +34,16 @@ labled as `full time` while anyone earning less would be `part time` or contract
 As of 2015, there are `r length(unique(salaries$serviceArea))` service areas
 with a total of `r nrow(salaries)` employees.
 
+### Data example
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+knitr::kable(
+  salaries %>%
+    filter(serviceArea != "unknown") %>% 
+    arrange(desc(earnings)) %>% 
+    top_n(n = 10, earnings))
+```
+
+## Overview Table
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 knitr::kable(salaries %>% 
   filter(serviceArea != "unknown") %>% 
