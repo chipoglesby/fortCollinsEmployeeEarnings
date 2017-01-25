@@ -6,7 +6,7 @@ output:
 ---
 
 ```{r cache=FALSE, echo=FALSE, message=F, warning=F}
-knitr::read_chunk('main.R')
+knitr::read_chunk('../main.R')
 ```
 An analysis of
 [2015 Fort Collins CO Employee Earnings](http://www.fcgov.com/openbook/?action=browse-salaries)
