@@ -13,6 +13,13 @@ The data pulled from the Fort Collins Open Book website is available in the [dat
 3.  `hourlyWage`: [In 2015, The Associated Press reported](http://denver.cbslocal.com/2015/01/01/colorado-minimum-wage-rises-to-8-23-in-2015/) that the minimum wage for Colorado was $8.23. Under the assumption that any employee earning more than $17,506/year would be full time, we calculated their possible hourly salary. Many employees are salaried, so this is more for informational purposes.
 4.  `status`: The status variable is used to help categorize employees into different buckets. Employees earning more than the assumed $8.23/hour would be labled as `full time` while anyone earning less would be `part time` or contract.
 
+5.  **Please note, the following entites are not part of the City of Fort Collins and have been removed from the analysis.** The City has a partnership and intergovernmental agreement with each entity and they provide services to them, such as HR and Finance, so their data is in the system.
+
+-   Downtown Development Authority
+-   Library District
+-   Poudre Fire Authority
+-   Urban Renewal Authority
+
 As of 2015, there are 11 service areas with a total of 1416 employees.
 
 ### Data example
