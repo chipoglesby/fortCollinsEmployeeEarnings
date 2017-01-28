@@ -13,5 +13,4 @@ source("code/functions.R")
 
 # ---- knit ----
 # Step Three: Knitting Report
-# rmarkdown::render("rmd/police.Rmd", "github_document", "../analysis/police.md")
-rmarkdown::render("rmd/README.Rmd", "github_document", "../README.md")
+source("code/reports.R")

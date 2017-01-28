@@ -1,19 +1,13 @@
 ---
-title: "Analysis: Fort Collins Police Department"
+title: paste("Analysis: Fort Collins", i, sep = i)
 output:
   github_document:
     html_preview: FALSE
 ---
 
-```{r setup, include=F}
-knitr::read_chunk('../code/load.R')
-options(scipen=999)
-```
-```{r begin, echo = FALSE, message = FALSE, warning = FALSE}
-```
 ## Salary Data
 
-The Fort Collins Police Department reports 
+The Fort Collins paste(i, sep = "") reports 
 `r police %>% summarize(count = n())`
 employees on staff in 2015. Of those employees the highest paid position is the
 `r police %>% arrange(desc(earnings)) %>% filter(earnings == max(earnings)) %>% select(jobTitle)` with
