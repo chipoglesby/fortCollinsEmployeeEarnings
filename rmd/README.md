@@ -1,4 +1,4 @@
-# RMD Files
+# R Markdown Files
 
 | File | Type |
 |:---|:---|
