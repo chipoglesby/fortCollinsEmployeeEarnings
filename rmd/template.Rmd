@@ -1,0 +1,15 @@
+---
+title: "`r i`"
+output:
+  github_document:
+    html_preview: FALSE
+---
+
+## Salary Data
+
+The Fort Collins `r paste(i, sep = "")` reports 
+`r salaries %>% filter(serviceArea == i) %>% summarize(count = n())` employees on
+staff in 2015. Of those employees the highest paid position is the
+`r salaries %>% filter(serviceArea == i) %>% top_n(1, earnings) %>% select(jobTitle)` with
+an annual salary of 
+`r paste("$", salaries %>% filter(serviceArea == i) %>% top_n(1, earnings) %>% select(earnings), sep = "")`.
