@@ -6,8 +6,6 @@ library(tidyverse)
 # ---- begin ----
 # Step One: Load Data:
 source("code/load2015.R")
-source("code/load2016.R")
-source("code/merge.R")
 
 # ---- analysis ----
 # Step Two: Analyzing data for report:

@@ -2,15 +2,16 @@ library(tidyverse)
 library(magrittr)
 
 # Frist, let's load the data into a data frame using reader.
-salaries2015 <- read_csv("data/raw/salaries2015.csv")
+salaries <- read_csv("data/raw/salaries2015.csv")
+
 ## Second, let's clean the data.
 
 # ---- clean ----
 # Give the data better names
-names(salaries2015) <- c("jobTitle", "department", "earnings")
+names(salaries) <- c("jobTitle", "department", "earnings")
 
 # Lowercase all names for consistency
-salaries2015 %<>%
+salaries %<>%
   transmute(jobTitle = tolower(jobTitle),
             department = tolower(department),
             earnings = 
@@ -57,7 +58,7 @@ salaries2015 %<>%
     status = ifelse(is.na(hourlyWage) == TRUE, "part time", "full time")
       )
 
-salaries2015 %<>%
+salaries %<>%
   filter(serviceArea != "unknown")
 
-write_csv(salaries2015, "data/clean/salaries2015.csv")
+write_csv(salaries, "data/clean/salaries.csv")

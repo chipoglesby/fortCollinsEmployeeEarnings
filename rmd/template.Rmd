@@ -13,3 +13,16 @@ staff in 2015. Of those employees the highest paid position is the
 `r salaries %>% filter(serviceArea == i) %>% top_n(1, earnings) %>% select(jobTitle)` with
 an annual salary of 
 `r paste("$", salaries %>% filter(serviceArea == i) %>% top_n(1, earnings) %>% select(earnings), sep = "")`.
+
+```{r, echo = FALSE}
+library(dplyr)
+salaries %>% 
+  filter(serviceArea == i) %>%
+  group_by(jobTitle) %>% 
+  summarize(earnings = mean(earnings)) %>% 
+  ggplot2::ggplot(aes(reorder(jobTitle, earnings), earnings)) +
+  geom_bar(stat = "identity") +
+  xlab("Job Title") +
+  ylab("Salary - mean") + 
+  coord_flip()
+```
