@@ -53,3 +53,17 @@ Overview Table
 | city manager                          |                1|             13|             20|      48765.03|
 | judicial services                     |                1|              8|             14|      20111.85|
 | deputy city manager                   |                1|              6|              6|      57108.05|
+
+| Department Analysis                                                                      |
+|:-----------------------------------------------------------------------------------------|
+| [City Attorney](analysis/cityattorney.md)                                                |
+| [City Manager](analysis/citymanager.md)                                                  |
+| [Community & Operation Services](analysis/communityandoperationservices.md)              |
+| [Deputy City Manager](analysis/deputycitymanager.md)                                     |
+| [Financial Services](analysis/financialservices.md)                                      |
+| [Information & Employee Services](analysis/informationandemployeeservices.md)            |
+| [Judicial Services](analysis/judicialservices.md)                                        |
+| [Planning, Development & Transportation](analysis/planningdevelopment&transportation.md) |
+| [Police Services](analysis/policeservices.md)                                            |
+| [Sustainability Services](analysis/sustainabilityservices.md)                            |
+| [Utility Services](analysis/utilityservices.md)                                          |

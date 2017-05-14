@@ -2,21 +2,20 @@ library(tidyverse)
 library(magrittr)
 
 # Frist, let's load the data into a data frame using reader.
-salaries <- read_csv("data/raw/salaries.csv")
-
+salaries2016 <- read_csv("data/raw/salaries2016.csv")
 ## Second, let's clean the data.
 
 # ---- clean ----
 # Give the data better names
-names(salaries) <- c("jobTitle", "department", "earnings")
+names(salaries2016) <- c("jobTitle", "department", "earnings")
 
 # Lowercase all names for consistency
-salaries %<>%
+salaries2016 %<>%
   transmute(jobTitle = tolower(jobTitle),
             department = tolower(department),
             earnings = 
               as.numeric(gsub('(\\$)|(\\,)','', earnings)),
-            year = 2015,
+            year = 2016,
             serviceArea = "") %>% 
   mutate(
     serviceArea = 
@@ -58,7 +57,7 @@ salaries %<>%
     status = ifelse(is.na(hourlyWage) == TRUE, "part time", "full time")
       )
 
-salaries %<>%
+salaries2016 %<>%
   filter(serviceArea != "unknown")
 
-write_csv(salaries, "data/clean/salaries.csv")
+write_csv(salaries2016, "data/clean/salaries2016.csv")

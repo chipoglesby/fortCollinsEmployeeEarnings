@@ -4,8 +4,10 @@ Sys.setenv(RSTUDIO_PANDOC='/Applications/RStudio.app/Contents/MacOS/pandoc')
 library(tidyverse)
 
 # ---- begin ----
-# Step One: Load Data from Google Big Query:
-source("code/load.R")
+# Step One: Load Data:
+source("code/load2015.R")
+source("code/load2016.R")
+source("code/merge.R")
 
 # ---- analysis ----
 # Step Two: Analyzing data for report:

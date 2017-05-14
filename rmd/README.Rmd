@@ -46,6 +46,7 @@ with a total of `r nrow(salaries)` employees.
 
 ### Data example
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(dplyr)
 knitr::kable(
   salaries %>%
     filter(serviceArea != "unknown") %>%
@@ -55,6 +56,7 @@ knitr::kable(
 
 ## Overview Table
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(dplyr)
 knitr::kable(salaries %>%
   filter(serviceArea != "unknown") %>%
   group_by(serviceArea) %>%
@@ -64,3 +66,17 @@ knitr::kable(salaries %>%
             medianSalary = median(earnings)) %>%
   arrange(desc(employeeCount)))
 ```
+
+| Department Analysis |
+|:---|
+| [City Attorney](analysis/cityattorney.md) |
+| [City Manager](analysis/citymanager.md) |
+| [Community & Operation Services](analysis/communityandoperationservices.md) |
+| [Deputy City Manager](analysis/deputycitymanager.md) |
+| [Financial Services](analysis/financialservices.md) |
+| [Information & Employee Services](analysis/informationandemployeeservices.md) |
+| [Judicial Services](analysis/judicialservices.md) |
+| [Planning, Development & Transportation](analysis/planningdevelopment&transportation.md) |
+| [Police Services](analysis/policeservices.md) |
+| [Sustainability Services](analysis/sustainabilityservices.md) |
+| [Utility Services](analysis/utilityservices.md) |

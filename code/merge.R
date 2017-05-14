@@ -1,0 +1,1 @@
+salaries <- rbind(salaries2015, salaries2016)
