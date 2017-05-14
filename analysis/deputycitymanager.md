@@ -1,4 +1,4 @@
-deputy city manager
+Deputy City Manager
 ================
 
 Salary Data

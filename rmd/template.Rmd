@@ -1,5 +1,5 @@
 ---
-title: "`r i`"
+title: "`r tools::toTitleCase(i)`"
 output:
   github_document:
     html_preview: FALSE
@@ -23,6 +23,7 @@ salaries %>%
   ggplot2::ggplot(aes(reorder(jobTitle, earnings), earnings)) +
   geom_bar(stat = "identity") +
   xlab("Job Title") +
-  ylab("Salary - mean") + 
+  ylab("Salary - mean") +
+  scale_y_continuous(labels = comma) +
   coord_flip()
 ```
