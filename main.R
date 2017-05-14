@@ -5,12 +5,15 @@ library(tidyverse)
 
 # ---- begin ----
 # Step One: Load Data:
-source("code/load2015.R")
+source('code/load2015.R')
 
 # ---- analysis ----
 # Step Two: Analyzing data for report:
-source("code/functions.R")
+source('code/functions.R')
 
 # ---- knit ----
 # Step Three: Knitting Report
-source("code/reports.R")
+source('code/reports.R')
+
+## --- Render README ----
+rmarkdown::render('rmd/README.Rmd', 'github_document', '../README.md')

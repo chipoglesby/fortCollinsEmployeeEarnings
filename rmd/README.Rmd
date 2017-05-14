@@ -54,7 +54,7 @@ knitr::kable(
     top_n(n = 10, earnings))
 ```
 
-## Overview Table
+## Table: Overview by Service Area
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 library(dplyr)
 knitr::kable(salaries %>%
@@ -64,10 +64,10 @@ knitr::kable(salaries %>%
             jobTitleCount = length(unique(jobTitle)),
             employeeCount = length(jobTitle),
             medianSalary = median(earnings)) %>%
-  arrange(desc(employeeCount)))
+  arrange(desc(medianSalary)))
 ```
 
-| Department Analysis |
+| Department Analysis - Read the quick analysis by service area here.|
 |:---|
 | [City Attorney](analysis/cityattorney.md) |
 | [City Manager](analysis/citymanager.md) |

@@ -37,24 +37,24 @@ As of 2015, there are 11 service areas with a total of 1416 employees.
 | chief information officer | information technology |  130630.2|  2015| information and employee services |       62.80| full time |
 | systems analyst           | information technology |  128388.3|  2015| information and employee services |       61.73| full time |
 
-Overview Table
---------------
+Table: Overview by Service Area
+-------------------------------
 
 | serviceArea                           |  departmentCount|  jobTitleCount|  employeeCount|  medianSalary|
 |:--------------------------------------|----------------:|--------------:|--------------:|-------------:|
-| planning development & transportation |                9|            122|            391|      37477.48|
 | police services                       |                3|             25|            286|      80195.07|
-| community and operation services      |                6|            103|            255|      47498.33|
-| utility services                      |                9|            105|            244|      54644.11|
 | information and employee services     |                2|             57|             98|      65725.87|
-| financial services                    |                6|             38|             55|      36946.86|
 | city attorney                         |                1|             10|             24|      57571.79|
-| sustainability services               |                3|             15|             23|      42539.25|
-| city manager                          |                1|             13|             20|      48765.03|
-| judicial services                     |                1|              8|             14|      20111.85|
 | deputy city manager                   |                1|              6|              6|      57108.05|
+| utility services                      |                9|            105|            244|      54644.11|
+| city manager                          |                1|             13|             20|      48765.03|
+| community and operation services      |                6|            103|            255|      47498.33|
+| sustainability services               |                3|             15|             23|      42539.25|
+| planning development & transportation |                9|            122|            391|      37477.48|
+| financial services                    |                6|             38|             55|      36946.86|
+| judicial services                     |                1|              8|             14|      20111.85|
 
-| Department Analysis                                                                      |
+| Department Analysis - Read the quick analysis by service area here.                      |
 |:-----------------------------------------------------------------------------------------|
 | [City Attorney](analysis/cityattorney.md)                                                |
 | [City Manager](analysis/citymanager.md)                                                  |
